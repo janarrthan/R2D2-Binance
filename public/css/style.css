@@ -1,0 +1,95 @@
+/* =========================== Colors ==================================== */
+.profile-nav {
+  margin-left: auto;
+}
+
+.main {
+  margin: 1%;
+}
+
+.header {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#btn-add {
+  height: 40px;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+thead th {
+  padding: 8px 10px !important;
+}
+
+.vendor-price .inputs {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+#details-modal p {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.order-details-table td {
+  vertical-align: baseline;
+}
+
+.nodisplay {
+  display: none;
+}
+
+/*  --------------------------------- Login Styles ---------------------------------- */
+.login-form {
+  margin: auto;
+  margin-top: 150px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.425);
+}
+
+/* =================================== Show Details Styles ================= */
+#details-modal #right-details img {
+  width: 100%;
+}
+
+/* ============================ Channels Settings Styles ================ */
+.channel-settings-box {
+  margin-top: 50px;
+  padding: 20px;
+  box-shadow: 1px 1px 15px 0px lightgray;
+}
+
+.channel-settings-box .card-header {
+  padding: 0;
+  border: 0;
+  background: #fff;
+}
+
+.channel-settings-box .card-header button {
+  padding: 0;
+  font-size: 22px;
+}
+
+/* ===================== Boostrap Modal Styles =============================== */
+.modal .modal-dialog {
+  max-width: 1400px;
+}

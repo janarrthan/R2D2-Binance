@@ -1,0 +1,35 @@
+{
+  "name": "beyondtrading-trading-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mtcute/dispatcher": "^0.27.6",
+    "@mtcute/node": "^0.27.6",
+    "axios": "^1.13.4",
+    "bcryptjs": "^3.0.3",
+    "binance-api-node": "^0.13.6",
+    "bybit-api": "^4.4.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.4",
+    "express-ipfilter": "^1.4.0",
+    "express-rate-limit": "^8.2.1",
+    "express-session": "^1.18.2",
+    "input": "^1.0.1",
+    "mongoose": "^9.1.3",
+    "nodemailer": "^7.0.12",
+    "properties-reader": "^2.3.0",
+    "request-ip": "^3.3.0",
+    "socket.io": "^4.8.3",
+    "sound-play": "^1.1.0",
+    "telegram": "^2.26.22"
+  }
+}

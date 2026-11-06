@@ -1,0 +1,125 @@
+<div class="header">
+  <h2>Telegram Signals</h2>
+  <button class="btn btn-primary" id="btn-add" onclick="showModal('create-modal')">Add +</button>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Coin Name</th>
+        <th>Direction</th>
+        <th>Channel Name</th>
+        <th>Message ID</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="create-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Telegram Signal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="add-form">
+          <input type="hidden" name="date" id="date" />
+          <div class="row">
+            <div class="col-lg-9" style="border-right: 2px solid black; ">
+              <div class="row p-2 align-items-end">
+                <div class="form-group mr-2">
+                  <label for="telegramChannel">Trading Signal Channel</label>
+                  <select class="form-control" id="telegramChannel" name="telegramChannel">
+                    <option value="" disabled selected>Select Channel</option>
+                    {{#each channels}}
+                      <option value="{{_id}}">{{channelName}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+
+                <div class="form-group mr-2">
+                  <label for="messageId">Message Id</label>
+                  <input type="number" name="messageId" id="messageId" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary" id="messageIdFillBtn">Find</button>
+                </div>
+              </div>
+
+              <div class="row p-2" style="border-bottom: 2px solid;">
+                <div class="form-group mr-2">
+                  <label for="message">Message</label>
+                  <textarea name="message" id="message" class="form-control" rows="10" cols="100"></textarea>
+                </div>
+              </div>
+
+              <div class="mt-4" id="telegram-message-container">
+                <p style="white-space: pre-line"></p>
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="isCreateBTSignal" />
+                <label class="form-check-label" for="isCreateBTSignal">Create BeyondTrading Signal</label>
+              </div>
+              <div class="form-group form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="isCreateTrade" />
+                <label class="form-check-label" for="isCreateTrade">Create Trade</label>
+              </div>
+              <div class="form-group form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="isSendMessage" />
+                <label class="form-check-label" for="isSendMessage">Send Message</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="add-product">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#exampleModal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="details-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Signal Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col" id="left-details">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/models/telegram-signal.js"></script>

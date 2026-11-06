@@ -1,0 +1,407 @@
+<div class="header">
+  <h2>Channel's Settings - {{channel.channelName}}</h2>
+</div>
+
+<input type="hidden" id="channelId" value="{{channel._id}}" />
+
+<div id="accordion">
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <h4>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-direction-collapse">
+          Settings to extract signal direction
+        </button>
+      </h4>
+
+      <p>Use this form to configure how to extract the direction (Long or Short) from the signals</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse show" id="channel-setting-direction-collapse" data-parent="#accordion">
+      <form id="channel-setting-direction">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="keywordsForLong" style="display: block;">Keywords to look for Long Signals (Seperated by comma)</label>
+              <input type="text" name="keywordsForLong" id="keywordsForLong" class="form-control" value="{{channel.directionSettings.keywordsForLong}}" />
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsForShort" style="display: block;">Keywords to look for Short Signals (Seperated by comma)</label>
+              <input type="text" name="keywordsForShort" id="keywordsForShort" class="form-control" value="{{channel.directionSettings.keywordsForShort}}" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-coinname-collapse">
+        Settings to extract signal coin name
+      </button>
+      <p>Use this form to configure how to extract the coin name </p>
+    </div>
+
+    <hr />
+
+    <div class="collapse" id="channel-setting-coinname-collapse" data-parent="#accordion">
+      <form id="channel-setting-coinname">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="configForCoinName" style="display: block;">
+                Follow the pattern below and configure.
+                <br />1 - The first box denotes how to check if the line contains the coinname. (Only && operator is allowed)
+                <br />2 - The second & following boxes denotes how to break the line to find the coinname and the place of the coin name in the broken like.
+                <br />3 - If there are more than 1 way to find the coinname, seperate the logic by nextline
+                <br />4 - Example: [# && coin] =*= [: === 1] 
+              </label>
+              <textarea rows="6" name="configForCoinName" id="configForCoinName" class="form-control">{{channel.coinNameSettings.configForCoinName}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToRemove" style="display: block;">Symbols and words to be removed (Seperated by comma)</label>
+              <input type="text" name="keywordsToRemove" id="keywordsToRemove" class="form-control" value="{{channel.coinNameSettings.keywordsToRemove}}"  />
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToReplace" style="display: block;">
+                Symbols and words to be replaced (Seperated by nextline) - (Ex: [, === .] =*= [BTC])
+                <br />1 - The first box denotes the symbol to be replaced with the following symbol.
+                <br />2 - The second box denotes if there are coins which needs to be excluded from this replacement.
+              </label>
+              <textarea rows="6" name="keywordsToReplace" id="keywordsToReplace" class="form-control">{{channel.coinNameSettings.keywordsToReplace}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="priceMultiplier" style="display: block;">
+                Change the prices for a particular coins by multiplying it (Seperated by nextline) - (Ex: [PEPEUSDT === 1000])
+                <br />1 - The first box denotes the symbol to be multiplyied with the following number.
+              </label>
+              <textarea rows="6" name="priceMultiplier" id="priceMultiplier" class="form-control">{{channel.coinNameSettings.priceMultiplier}}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-entry-collapse">
+        Settings to extract signal entry price
+      </button>
+      <p>Use this form to configure how to extract the entry price</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse" id="channel-setting-entry-collapse" data-parent="#accordion">
+      <form id="channel-setting-entry">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="configForEntryPrice" style="display: block;">
+                Follow the pattern below and configure.
+                <br />1 - The first box denotes how to check if the line contains the entry price. (Only && operator is allowed) (use ! symbol before the word to exclude)
+                <br />2 - The second & following boxes denotes how to break the line to find the entry price and the place of it in the broken like.
+                <br />3 - If there are more than 1 way to find the entry price, seperate the logic by nextline
+                <br />4 - Example: [entry] =*= [: === 1]
+              </label>
+              <textarea rows="6" name="configForEntryPrice" id="configForEntryPrice" class="form-control">{{channel.entryPriceSettings.configForEntryPrice}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToRemove" style="display: block;">Symbols and words to be removed (Seperated by comma)</label>
+              <input type="text" name="keywordsToRemove" id="keywordsToRemove" class="form-control" value="{{channel.entryPriceSettings.keywordsToRemove}}" />
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToReplace" style="display: block;">
+                Symbols and words to be replaced (Seperated by nextline) - (Ex: [, === .] =*= [BTC])
+                <br />1 - The first box denotes the symbol to be replaced with the following symbol.
+                <br />2 - The second box denotes if there are coins which needs to be excluded from this replacement.
+
+              </label>
+              <textarea rows="6" name="keywordsToReplace" id="keywordsToReplace" class="form-control">{{channel.entryPriceSettings.keywordsToReplace}}</textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-targets-oneline-collapse">
+        Settings to extract signal targets (One line targets)
+      </button>
+      <p>Use this form to configure how to extract the targets</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse" id="channel-setting-targets-oneline-collapse" data-parent="#accordion">
+      <form id="channel-setting-targets-oneline">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="configForTargets" style="display: block;">
+                Follow the pattern below and configure.
+                <br />1 - The first box denotes how to check if the line contains the targets.  (Only && operator is allowed)
+                <br />2 - The second & following boxes denotes how to break the line to find the targets list and the place of it in the broken line.
+                <br />3 - The final box denotes how to break the targets into list.
+                <br />4 - If there are more than 1 way to find the targets, seperate the logic by nextline
+                <br />5 - Example: [targets] =*= [: === 1] =*= [-]
+              </label>
+              <textarea rows="6" name="configForTargets" id="configForTargets" class="form-control">{{channel.onelineTargetsSettings.configForTargets}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToRemove" style="display: block;">Symbols and words to be removed (Seperated by comma)</label>
+              <input type="text" name="keywordsToRemove" id="keywordsToRemove" class="form-control" value="{{channel.onelineTargetsSettings.keywordsToRemove}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToReplace" style="display: block;">
+                Symbols and words to be replaced (Seperated by nextline) - (Ex: [, === .] =*= [BTC])
+                <br />1 - The first box denotes the symbol to be replaced with the following symbol.
+                <br />2 - The second box denotes if there are coins which needs to be excluded from this replacement.
+
+              </label>
+              <textarea rows="6" name="keywordsToReplace" id="keywordsToReplace" class="form-control">{{channel.onelineTargetsSettings.keywordsToReplace}}</textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-targets-nextline-collapse">
+        Settings to extract signal targets (Next line targets)
+      </button>
+      <p>Use this form to configure how to extract the targets</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse" id="channel-setting-targets-nextline-collapse" data-parent="#accordion">
+      <form id="channel-setting-targets-nextline">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="configForTargets" style="display: block;">
+                Follow the pattern below and configure.
+                <br />1 - The first box denotes how to check if the line contains the targets. (Only && operator is allowed)
+                <br />2 - The second & following boxes denotes how to break the line to find the targets list and the place of it in the broken line.
+                <br />3 - If there are more than 1 way to find the targets, seperate the logic by nextline
+                <br />4 - Example: [targets] =*= [: === 1]
+              </label>
+              <textarea rows="6" name="configForTargets" id="configForTargets" class="form-control">{{channel.nextlineTargetsSettings.configForTargets}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToRemove" style="display: block;">Symbols and words to be removed (Seperated by comma)</label>
+              <input type="text" name="keywordsToRemove" id="keywordsToRemove" class="form-control" value="{{channel.nextlineTargetsSettings.keywordsToRemove}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToReplace" style="display: block;">
+                Symbols and words to be replaced (Seperated by nextline) - (Ex: [, === .] =*= [BTC])
+                <br />1 - The first box denotes the symbol to be replaced with the following symbol.
+                <br />2 - The second box denotes if there are coins which needs to be excluded from this replacement.
+
+              </label>
+              <textarea rows="6" name="keywordsToReplace" id="keywordsToReplace" class="form-control">{{channel.nextlineTargetsSettings.keywordsToReplace}}</textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-stoploss-collapse">
+        Settings to extract signal stoploss price
+      </button>
+      <p>Use this form to configure how to extract the stoploss price</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse" id="channel-setting-stoploss-collapse" data-parent="#accordion">
+      <form id="channel-setting-stoploss">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="configForStoploss" style="display: block;">
+                Follow the pattern below and configure.
+                <br />1 - The first box denotes how to check if the line contains the stoploss price. (Only && operator is allowed) (use ! symbol before the word to exclude)
+                <br />2 - The second & following boxes denotes how to break the line to find the stoploss price and the place of it in the broken like.
+                <br />3 - If there are more than 1 way to find the stoploss price, seperate the logic by nextline
+                <br />4 - Example: [entry] =*= [: === 1]
+              </label>
+              <textarea rows="6" name="configForStoploss" id="configForStoploss" class="form-control">{{channel.stopLossSettings.configForStoploss}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToRemove" style="display: block;">Symbols and words to be removed (Seperated by comma)</label>
+              <input type="text" name="keywordsToRemove" id="keywordsToRemove" class="form-control" value="{{channel.stopLossSettings.keywordsToRemove}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsToReplace" style="display: block;">
+                Symbols and words to be replaced (Seperated by nextline) - (Ex: [, === .] =*= [BTC])
+                <br />1 - The first box denotes the symbol to be replaced with the following symbol.
+                <br />2 - The second box denotes if there are coins which needs to be excluded from this replacement.
+
+              </label>
+              <textarea rows="6" name="keywordsToReplace" id="keywordsToReplace" class="form-control">{{channel.stopLossSettings.keywordsToReplace}}</textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <h4>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-include_exclude-collapse">
+          Settings to determine if the the signal should be included or excluded
+        </button>
+      </h4>
+
+      <p>Use this form to configure how to include or exclude signals</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse show" id="channel-setting-include_exclude-collapse" data-parent="#accordion">
+      <form id="channel-setting-include_exclude">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="keywordsForIncluding" style="display: block;">
+                Keywords to look for including (Seperated by nextline) (only use && operator)
+                <br />(Ex: [risk && leverage])
+              </label>
+              <textarea rows="6" name="keywordsForIncluding" id="keywordsForIncluding" class="form-control">{{channel.includeExcludeSettings.keywordsForIncluding}}</textarea>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="keywordsForExcluding" style="display: block;">
+                Keywords to look for excluding (Seperated by nextline) (only use && operator)
+                <br />(Ex: [risk && leverage])
+                <textarea rows="6" name="keywordsForExcluding" id="keywordsForExcluding" class="form-control">{{channel.includeExcludeSettings.keywordsForExcluding}}</textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card channel-settings-box">
+    <div class="card-header">
+      <h4>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#channel-setting-extract-alerts-collapse">
+          Settings to alert when extraction fails
+        </button>
+      </h4>
+
+      <p>Use this form to configure how to alert when extraction fails</p>
+    </div>
+
+    <hr />
+
+    <div class="collapse show" id="channel-setting-extract-alerts-collapse" data-parent="#accordion">
+      <form id="channel-setting-extract-alerts">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group mr-2">
+              <label for="noOfSuccessExtracts" style="display: block;">
+                Input when the x number of extract is successfull and the rest isnt.
+              </label>
+              <input type="number" name="noOfSuccessExtracts" id="noOfSuccessExtracts" class="form-control" value="{{channel.extractAlertsSettings.noOfSuccessExtracts}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="maxProfitPercAlert" style="display: block;">
+                Alert for when the profit % is higher or equal to the below %
+              </label>
+              <input type="number" name="maxProfitPercAlert" id="maxProfitPercAlert" class="form-control" value="{{channel.extractAlertsSettings.maxProfitPercAlert}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="maxStoplossAlert" style="display: block;">
+                Alert for when the stoploss % is higher or equal to the below %
+              </label>
+              <input type="number" name="maxStoplossAlert" id="maxStoplossAlert" class="form-control" value="{{channel.extractAlertsSettings.maxStoplossAlert}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="minNumOfTargetsAlert" style="display: block;">
+                Alert for when the no of targets is less than or equal to below number
+              </label>
+              <input type="number" name="minNumOfTargetsAlert" id="minNumOfTargetsAlert" class="form-control" value="{{channel.extractAlertsSettings.minNumOfTargetsAlert}}"/>
+            </div>
+
+            <div class="form-group mr-2">
+              <label for="coinNameAlert" style="display: block;">
+                Alert for signal coin names (Seperated by comma)
+              </label>
+              <textarea rows="6" name="coinNameAlert" id="coinNameAlert" class="form-control">{{channel.extractAlertsSettings.coinNameAlert}}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" id="btn-submit">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/models/channel-settings.js"></script>

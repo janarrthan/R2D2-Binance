@@ -1,0 +1,199 @@
+<div class="header">
+  <h2>Channels</h2>
+  <button class="btn btn-primary" id="btn-add" onclick="showModal('create-modal')">Add +</button>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Channel</th>
+        <th>Channel ID</th>
+        <th>Reply Account</th>
+        <th>Reply Channel</th>
+        <th>Reply Channel ID</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="create-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Channel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="add-form" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="channelAccount">Channel Account</label>
+                <select class="form-control" id="channelAccount" name="channelAccount">
+                  <option value="" disabled selected>Select Account</option>
+                  {{#each accounts}}
+                    <option value="{{_id}}">{{accountName}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="channelName">Channel Name</label>
+                <input type="text" name="channelName" id="channelName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="channelId">Channel ID</label>
+                <input type="text" name="channelId" id="channelId" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="replyToChannelAccount">Reply To Channel Account</label>
+                <select class="form-control" id="replyToChannelAccount" name="replyToChannelAccount">
+                  <option value="" disabled selected>Select Account</option>
+                  {{#each accounts}}
+                    <option value="{{_id}}">{{accountName}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="replyToChannelName">Reply To Channel Name</label>
+                <input type="text" name="replyToChannelName" id="replyToChannelName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="replyToChannelId">Reply To Channel ID</label>
+                <input type="text" name="replyToChannelId" id="replyToChannelId" class="form-control" />
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="isListenToNewMessages" />
+                <label class="form-check-label" for="isListenToNewMessages">Listen To New Messages</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="add-product">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#exampleModal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="update-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Channel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="update-form" enctype="multipart/form-data">
+          <input type="hidden" id="_id" value="" />
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="channelAccount">Channel Account</label>
+                <select class="form-control" id="channelAccount" name="channelAccount">
+                  <option value="" disabled selected>Select Account</option>
+                  {{#each accounts}}
+                    <option value="{{_id}}">{{accountName}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="channelName">Channel Name</label>
+                <input type="text" name="channelName" id="channelName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="channelId">Channel ID</label>
+                <input type="text" name="channelId" id="channelId" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="replyToChannelAccount">Reply To Channel Account</label>
+                <select class="form-control" id="replyToChannelAccount" name="replyToChannelAccount">
+                  <option value="" disabled selected>Select Account</option>
+                  {{#each accounts}}
+                    <option value="{{_id}}">{{accountName}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="replyToChannelName">Reply To Channel Name</label>
+                <input type="text" name="replyToChannelName" id="replyToChannelName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="replyToChannelId">Reply To Channel ID</label>
+                <input type="text" name="replyToChannelId" id="replyToChannelId" class="form-control" />
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="isListenToNewMessages" />
+                <label class="form-check-label" for="isListenToNewMessages">Listen To New Messages</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="add-product">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#exampleModal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/models/channel.js"></script>

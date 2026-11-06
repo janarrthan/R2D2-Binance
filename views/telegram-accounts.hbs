@@ -1,0 +1,132 @@
+<div class="header">
+  <h2>Telegram Accounts</h2>
+  <button class="btn btn-primary" id="btn-add" onclick="showModal('create-modal')">Add +</button>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account Name</th>
+        <th>API ID</th>
+        <th>API Hash</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="create-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Telegram Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="add-form" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="accountName">Account Name</label>
+                <input type="text" name="accountName" id="accountName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiId">API ID</label>
+                <input type="text" name="apiId" id="apiId" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiHash">API Hash</label>
+                <input type="text" name="apiHash" id="apiHash" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="btn-submit">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#exampleModal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="update-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Telegram Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="update-form" enctype="multipart/form-data">
+          <input type="hidden" id="_id" value="" />
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="accountName">Account Name</label>
+                <input type="text" name="accountName" id="accountName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiId">API ID</label>
+                <input type="text" name="apiId" id="apiId" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiHash">API Hash</label>
+                <input type="text" name="apiHash" id="apiHash" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="btn-submit">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#exampleModal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/models/telegram-accounts.js"></script>

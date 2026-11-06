@@ -1,0 +1,115 @@
+<div class="header">
+  <h2>User Management -
+    <span style="font-size: 18px;">{{user.userName}}
+      || Wallet Balance:
+      {{balance.walletBalance}}
+      || Margin Balance:
+      {{balance.marginBalance}}
+    </span>
+  </h2>
+  {{! <button class="btn btn-primary" id="btn-add" onclick="showModal('create-modal')">Add +</button> }}
+</div>
+
+<input type="hidden" id="userId" value="{{user._id}}" />
+
+<nav class="mt-3">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a
+      class="nav-item nav-link active"
+      id="nav-positions-tab"
+      data-toggle="tab"
+      href="#nav-postions"
+      role="tab"
+      aria-controls="nav-positions"
+      aria-selected="true"
+    >Positions</a>
+    <a
+      class="nav-item nav-link"
+      id="nav-open_orders-tab"
+      data-toggle="tab"
+      href="#nav-open_orders"
+      role="tab"
+      aria-controls="nav-open_orders"
+      aria-selected="false"
+    >Open Orders</a>
+    <a
+      class="nav-item nav-link"
+      id="nav-open_algo_orders-tab"
+      data-toggle="tab"
+      href="#nav-open_algo_orders"
+      role="tab"
+      aria-controls="nav-open_algo_orders"
+      aria-selected="false"
+    >Open Algo Orders</a>
+    {{! <a class="nav-item nav-link" id="nav-open_tpsl_orders-tab" data-toggle="tab" href="#nav-open_tpsl_orders" role="tab" aria-controls="nav-open_tpsl_orders" aria-selected="false">Open TPSL Orders</a> }}
+  </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-postions" role="tabpanel" aria-labelledby="nav-positions-tab">
+    <table class="table table-striped" id="positions-table">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th>Direction</th>
+          <th>Amount</th>
+          <th>Quantity</th>
+          <th>PnL</th>
+          <th>Entry Price</th>
+          <th>Target Price</th>
+          <th>Stop Loss</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+    </table>
+
+    <p>No of Positions: <span id="position-qty"></span></p>
+  </div>
+
+  <div class="tab-pane fade" id="nav-open_orders" role="tabpanel" aria-labelledby="nav-open_orders-tab">
+    <table class="table table-striped" id="open-orders-table">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th>Direction</th>
+          <th>Side</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Stop Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+    </table>
+
+    <p>No of Open Order: <span id="open-orders-qty"></span></p>
+  </div>
+
+  <div class="tab-pane fade" id="nav-open_algo_orders" role="tabpanel" aria-labelledby="nav-open_alg_orders-tab">
+    <table class="table table-striped" id="open-algo-orders-table">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th>Direction</th>
+          <th>Side</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Stop Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+    </table>
+
+    <p>No of Open Order: <span id="open-algo-orders-qty"></span></p>
+  </div>
+</div>
+
+<script src="/js/models/user-management.js"></script>

@@ -1,0 +1,236 @@
+<div class="header">
+  <h2>Users</h2>
+  <button class="btn btn-primary" id="btn-add" onclick="showModal('create-modal')">Add +</button>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>NIC</th>
+        <th>Total Investment</th>
+        <th>API Last Updated Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="create-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="add-form">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" name="userName" id="userName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number" name="phoneNumber" id="phoneNumber" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="tradingStrategies">
+                  Trading Strategies
+                  <br />
+                  Example: [strategyName] =*= [tradingAmount] (Seperated by nextline)
+                </label>
+                <textarea rows="5" name="tradingStrategies" id="tradingStrategies" class="form-control"></textarea>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="joinedDate">Joined Date</label>
+                <input type="datetime-local" name="joinedDate" id="joinedDate" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiLastUpdatedDate">API Last Updated Date</label>
+                <input type="datetime-local" name="apiLastUpdatedDate" id="apiLastUpdatedDate" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiKey">API Key</label>
+                <input type="text" name="apiKey" id="apiKey" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiSecret">API Secret</label>
+                <input type="text" name="apiSecret" id="apiSecret" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="totalInvestment">Total Investment</label>
+                <input type="number" name="totalInvestment" id="totalInvestment" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="nic">NIC</label>
+                <input type="text" name="nic" id="nic" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="note">Note</label>
+                <textarea rows="5" name="note" id="note" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="add-product">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#create-modal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="update-modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="update-form">
+          <input type="hidden" id="userId" />
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" name="userName" id="userName" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number" name="phoneNumber" id="phoneNumber" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Blocked">Blocked</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="tradingStrategies">
+                  Trading Strategies
+                  <br />
+                  Example: [strategyName] =*= [tradingAmount] (Seperated by nextline)
+                </label>
+                <textarea rows="5" name="tradingStrategies" id="tradingStrategies" class="form-control"></textarea>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="joinedDate">Joined Date</label>
+                <input type="datetime-local" name="joinedDate" id="joinedDate" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiLastUpdatedDate">API Last Updated Date</label>
+                <input type="datetime-local" name="apiLastUpdatedDate" id="apiLastUpdatedDate" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiKey">API Key</label>
+                <input type="text" name="apiKey" id="apiKey" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="apiSecret">API Secret</label>
+                <input type="text" name="apiSecret" id="apiSecret" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="totalInvestment">Total Investment</label>
+                <input type="number" name="totalInvestment" id="totalInvestment" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="totalWithdrawal">Total Withdrawal</label>
+                <input type="number" name="totalWithdrawal" id="totalWithdrawal" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="nic">NIC</label>
+                <input type="text" name="nic" id="nic" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label for="note">Note</label>
+                <textarea rows="5" name="note" id="note" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4">
+            <button type="submit" class="btn btn-primary" id="add-product">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#update-modal"
+            >Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/models/user.js"></script>
