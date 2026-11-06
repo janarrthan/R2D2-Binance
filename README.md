@@ -109,8 +109,6 @@ cp .env.example .env    # then fill in your values
 | `BREVO_RECEIVER_EMAIL`    | Address that receives login and alert emails                        |
 | `AUTH_EMAIL`              | Email of the initial dashboard admin                               |
 | `AUTH_PASSWORD`           | Password of the initial dashboard admin                            |
-| `BINANCE_TEST_API_KEY`    | Only used by `src/binance-test.js`                                 |
-| `BINANCE_TEST_API_SECRET` | Only used by `src/binance-test.js`                                 |
 
 ### First Run
 
